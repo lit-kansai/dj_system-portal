@@ -18,6 +18,7 @@ export interface IFetchRoomDetailModel {
   name: string
   description: string
   playlistId: string
+  provider: string | null
   users: User[]
   letters: Letter[]
 }
@@ -29,6 +30,7 @@ export class FetchRoomDetailModel implements IFetchRoomDetailModel {
   private readonly _name: string
   private readonly _description: string
   private readonly _playlistId: string
+  private readonly _provider: string | null
   private readonly _users: User[]
   private readonly _letters: Letter[]
   constructor(response: IFetchRoomDetailModel) {
@@ -38,6 +40,7 @@ export class FetchRoomDetailModel implements IFetchRoomDetailModel {
     this._name = response.name
     this._description = response.description
     this._playlistId = response.playlistId
+    this._provider = response.provider
     this._users = response.users
     this._letters = response.letters
   }
@@ -64,6 +67,10 @@ export class FetchRoomDetailModel implements IFetchRoomDetailModel {
 
   get playlistId(): string {
     return this._playlistId
+  }
+
+  get provider(): string | null {
+    return this._provider
   }
 
   get users(): User[] {
